@@ -1,0 +1,46 @@
+@use "../base/root" as *;
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--dark);
+  border: 1px solid var(--primary);
+  font-weight: 500;
+  &:hover {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: var(--light);
+  }
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-weight: 500;
+  &:hover {
+    background-color: var(--primary);
+    color: var(--dark);
+    border: 1px solid var(--primary);
+  }
+}
+
+.btn-plus {
+  background-color: rgba(255, 166, 0, 0.4);
+  border: 1px solid var(--primary);
+  color: var(--light);
+  width: 100%;
+  i {
+    font-size: 20px;
+  }
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+
+  &:hover {
+    background-color: rgba(255, 166, 0, 0.4);
+    border: 1px solid var(--primary);
+    color: var(--light);
+  }
+}

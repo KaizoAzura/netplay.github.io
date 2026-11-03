@@ -53,6 +53,11 @@
 
       .btn {
         color: var(--light);
+        &:focus {
+          border: 0;
+          outline: 0;
+          box-shadow: none;
+        }
       }
     }
 
@@ -81,6 +86,99 @@
         }
       }
     }
+  }
+}
+
+// offcanvas Profile
+.offcanvas-profile {
+  min-height: 40vh;
+  height: max-content;
+  width: calc(100% - 24px) !important;
+  margin: 60px 12px 12px 12px;
+  box-shadow: 0 0 10px 10px rgba(17, 17, 17, 0.554);
+
+  .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .account {
+      background-color: #090909;
+      width: 100%;
+      border: 1px solid #111111;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      gap: 10px;
+      i {
+        border: 1px solid var(--light);
+        font-size: 18px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .account-name {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        h5 {
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--light);
+        }
+        p {
+          font-size: 12px;
+          color: var(--text);
+          font-weight: 300;
+        }
+      }
+    }
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+
+      .btn {
+        flex: 1;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .navbar-nav {
+      .nav-link {
+        i {
+          font-size: 18px;
+        }
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        border-radius: 8px;
+        &:hover {
+          background-color: #111111;
+        }
+      }
+    }
+  }
+}
+
+// sm
+
+// offcanvas profile
+@include sm {
+  .offcanvas-profile {
+    width: 350px !important;
   }
 }
 
