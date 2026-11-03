@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+// Color
+:root {
+  --dark: #000000;
+  --light: #ffffff;
+  --primary: orange;
+  --text: #7a7a7a;
+  --secondary: #232323;
+}
+
+// Breakpoints
+@mixin sm {
+  @media (min-width: 577px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: 993px) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: 1441px) {
+    @content;
+  }
+}
+
+// Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Global
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  height: 500vh;
+}
