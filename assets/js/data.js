@@ -1,0 +1,36 @@
+const CONTENT = {
+  movie: [
+    {
+      id: "resident-evil",
+      title: "Resident Evil",
+      cover: "assets/image/resident_evil_poster.webp",
+      rating: 7.8,
+      comments: 1240,
+      year: 2026,
+      genre: "Adventure, Horror, Sci-Fi",
+      desc: "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
+    },
+    {
+      id: "doctor-X",
+      title: "Doctor X Mafia In White",
+      cover: "assets/image/doctor-x-mafia.webp",
+      rating: 8.1,
+      comments: 560,
+      year: 2026,
+      genre: "Drama, Crime, Mystery",
+      desc: "In a hospital dominated by ego and corruption, an enigmatic but brilliant surgeon arrives — taking on seemingly impossible cases amid fierce opposition.",
+    },
+    {
+      id: "insidious-out-of-further",
+      title: "Insidious Out of Further",
+      cover: "assets/image/Insidious-out-of-the-further-poster.webp",
+      rating: 7.2,
+      comments: 320,
+      year: 2026,
+      genre: "Thriller, Horror",
+      desc: "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
+    },
+  ],
+  podcast: [],
+  music: [],
+};

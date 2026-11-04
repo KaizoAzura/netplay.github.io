@@ -49,6 +49,10 @@
       &:hover {
         color: var(--primary);
       }
+
+      &.active {
+        color: var(--primary);
+      }
     }
   }
 

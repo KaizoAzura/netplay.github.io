@@ -19,15 +19,16 @@ mq.addEventListener("change", setSearchDirection);
 
 // slide hero
 
+
   const heroEl = document.getElementById("heroCarousel");
   const heroCarousel = bootstrap.Carousel.getOrCreateInstance(heroEl);
-  const IMAGE_DURATION = 6000; // lama slide gambar (ms)
-  let imageTimer;
+  const canPlayVideo = window.matchMedia("(min-width: 993px)");
+  const SLIDE_DURATION = 6000; // lama slide gambar / cover (ms)
+  let slideTimer;
 
   function startActiveSlide() {
-    clearTimeout(imageTimer);
+    clearTimeout(slideTimer);
 
-    // hentikan semua video
     heroEl.querySelectorAll("video").forEach((v) => {
       v.pause();
       v.currentTime = 0;
@@ -36,18 +37,23 @@ mq.addEventListener("change", setSearchDirection);
     const active = heroEl.querySelector(".carousel-item.active");
     const video = active.querySelector("video");
 
-    if (video) {
+    if (video && canPlayVideo.matches) {
+      // desktop: putar trailer, pindah saat selesai
       video.play().catch(() => {});
     } else {
-      // slide gambar: pindah otomatis setelah beberapa detik
-      imageTimer = setTimeout(() => heroCarousel.next(), IMAGE_DURATION);
+      // mobile atau slide gambar: tampilkan cover, pindah via timer
+      slideTimer = setTimeout(() => heroCarousel.next(), SLIDE_DURATION);
     }
   }
 
-  // slide video pindah setelah trailer selesai
   heroEl.querySelectorAll("video").forEach((v) =>
     v.addEventListener("ended", () => heroCarousel.next())
   );
 
   heroEl.addEventListener("slid.bs.carousel", startActiveSlide);
+
+  // layar di-resize melewati 992px: sesuaikan perilaku slide aktif
+  canPlayVideo.addEventListener("change", startActiveSlide);
+
   startActiveSlide();
+

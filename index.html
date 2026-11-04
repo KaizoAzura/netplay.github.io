@@ -31,7 +31,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"
-              ><i class="ri-film-line"></i><span>Film</span></a
+              ><i class="ri-film-line"></i><span>Movie</span></a
             >
           </li>
           <li class="nav-item">
@@ -69,7 +69,7 @@
     <!-- end navbar -->
 
     <!-- hero -->
-    <!-- hero -->
+
     <section class="hero">
       <div
         id="heroCarousel"
@@ -106,15 +106,21 @@
               class="hero-media"
               muted
               playsinline
-              preload="metadata"
-              poster="assets/image/poster1.webp"
+              preload="none"
+              poster="assets/image/resident_evil_poster.webp"
             >
               <source src="assets/video/resident_evil.mp4" type="video/mp4" />
             </video>
             <div class="hero-overlay"></div>
             <div class="hero-content">
-              <span class="hero-badge">Film</span>
-              <h1 class="hero-title">RESIDENT EVIL</h1>
+              <span class="hero-badge">Movie</span>
+              <h1 class="hero-title">
+                <img
+                  class="title-image"
+                  src="assets/image/resident_evil_title.webp"
+                  alt="Resident Evil"
+                />
+              </h1>
               <p class="hero-meta">
                 2026 &bull; 18+ &bull; 1h 35m &bull; Horror
               </p>
@@ -138,18 +144,23 @@
           <div class="carousel-item">
             <img
               class="hero-media"
-              src="assets/image/podcast_cover.webp"
+              src="assets/image/lentera_malam_cover.webp"
               alt="Judul Podcast"
             />
             <div class="hero-overlay"></div>
             <div class="hero-content">
               <span class="hero-badge">Podcast</span>
-              <h1 class="hero-title">ROMEO AND JULIET</h1>
-              <p class="hero-meta">2026 &bull; 13+ &bull; 45m &bull; Romance</p>
+              <h1 class="hero-title">
+                <img
+                  class="title-image"
+                  src="assets/image/lentera_malam_title.webp"
+                  alt="Lentera Malam"
+                />
+              </h1>
+              <p class="hero-meta">2026 &bull; 13+ &bull; 45m &bull; Horror</p>
               <p class="hero-desc">
-                A timeless tale of love, passion, and tragedy. Discover the
-                story of two hearts destined to be together in a world that
-                keeps them apart.
+                A popular horror podcast in Indonesia, hosted by Jamaluddin
+                Daris (Jamal).
               </p>
               <div class="hero-actions">
                 <a href="#!" class="btn btn-primary"
@@ -172,7 +183,13 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
               <span class="hero-badge">Music</span>
-              <h1 class="hero-title">JUSTICE</h1>
+              <h1 class="hero-title">
+                <img
+                  class="title-image"
+                  src="assets/image/justice_title.webp"
+                  alt="Justice Almbum"
+                />
+              </h1>
               <p class="hero-meta">
                 2026 &bull; Justin Bieber &bull; 12 Lagu &bull; Pop
               </p>
@@ -195,7 +212,96 @@
       </div>
     </section>
     <!-- end hero -->
-    <!-- end hero -->
+
+    <!-- trending -->
+    <!-- trending -->
+    <section class="trending">
+      <div class="trending-header">
+        <h2 class="trending-title">Trending</h2>
+
+        <ul class="nav nav-pills trending-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              data-bs-toggle="pill"
+              data-bs-target="#tab-movie"
+              type="button"
+              role="tab"
+            >
+              Movie
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#tab-podcast"
+              type="button"
+              role="tab"
+            >
+              Podcast
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#tab-music"
+              type="button"
+              role="tab"
+            >
+              Music
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab-movie" role="tabpanel">
+          <div class="cover-row" id="row-movie"></div>
+        </div>
+        <div class="tab-pane fade" id="tab-podcast" role="tabpanel">
+          <div class="cover-row" id="row-podcast"></div>
+        </div>
+        <div class="tab-pane fade" id="tab-music" role="tabpanel">
+          <div class="cover-row" id="row-music"></div>
+        </div>
+      </div>
+    </section>
+    <!-- end trending -->
+
+    <!-- modal detail (satu modal untuk semua konten) -->
+    <div
+      class="modal fade detail-modal"
+      id="detailModal"
+      tabindex="-1"
+      aria-labelledby="detailTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="detail-cover-wrap">
+            <img id="detailCover" class="detail-cover" src="" alt="" />
+            <button
+              type="button"
+              class="btn detail-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="ri-close-line"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span class="hero-badge" id="detailType"></span>
+            <h3 class="detail-title" id="detailTitle"></h3>
+            <p class="detail-meta" id="detailMeta"></p>
+            <p class="detail-desc" id="detailDesc"></p>
+            <!-- isi detail lain (cast, tombol, episode, dst) nanti ditambah di sini -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end trending -->
 
     <!-- offcanvas -->
 
@@ -372,5 +478,7 @@
     ></script>
     <!-- vanila js -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/trending.js"></script>
   </body>
 </html>

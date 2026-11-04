@@ -24,18 +24,21 @@ body {
 .hero {
   position: relative;
   width: 100%;
+  height: 100vh;
+  height: 100dvh;
   background-color: var(--dark);
   overflow: hidden;
 }
+.hero .carousel,
+.hero .carousel-inner,
 .hero .carousel-item {
-  position: relative;
+  height: 100%;
 }
 .hero .hero-media {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -43,16 +46,15 @@ body {
 }
 .hero .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, transparent 30%), linear-gradient(to bottom, transparent 45%, rgba(0, 0, 0, 0.7) 80%, var(--dark) 100%);
+  inset: 0;
+  background: linear-gradient(to top, var(--dark) 0%, rgba(0, 0, 0, 0.6) 35%, transparent 70%), linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 25%);
 }
 .hero .hero-content {
-  position: relative;
-  z-index: 2;
-  padding: calc(56.25vw - 70px) 16px 130px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 130px;
+  padding: 0 16px;
   color: var(--light);
   text-align: center;
 }
@@ -72,9 +74,17 @@ body {
   font-weight: 800;
   margin-bottom: 4px;
 }
+.hero .hero-content .title-image {
+  display: block;
+  width: 220px;
+  max-width: 70%;
+  height: auto;
+  margin: 8px auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
 .hero .hero-content .hero-meta {
   font-size: 12px;
-  color: var(--text);
+  color: whitesmoke;
   margin-bottom: 8px;
 }
 .hero .hero-content .hero-desc {
@@ -92,11 +102,10 @@ body {
   gap: 12px;
 }
 .hero .carousel-indicators {
-  bottom: 84px;
+  bottom: 96px;
   margin: 0;
   justify-content: center;
   padding: 0 16px;
-  z-index: 3;
 }
 .hero .carousel-indicators [data-bs-target] {
   width: 32px;
@@ -110,37 +119,26 @@ body {
   opacity: 1;
 }
 
+.trending {
+  background-color: var(--dark);
+}
+
 @media (min-width: 993px) {
-  .hero {
-    height: 100vh;
-    height: 100dvh;
-  }
-  .hero .carousel,
-  .hero .carousel-inner,
-  .hero .carousel-item {
-    height: 100%;
-  }
-  .hero .hero-media {
-    inset: 0;
-    height: 100%;
-    aspect-ratio: auto;
-  }
   .hero .hero-overlay {
-    inset: 0;
-    height: 100%;
-    aspect-ratio: auto;
     background: linear-gradient(to top, var(--dark) 0%, rgba(0, 0, 0, 0.6) 35%, transparent 70%), linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent 70%), linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 25%);
   }
   .hero .hero-content {
-    position: absolute;
-    left: 0;
-    right: 0;
     bottom: 100px;
     padding: 0 48px;
     text-align: left;
   }
   .hero .hero-content .hero-title {
     font-size: 56px;
+  }
+  .hero .hero-content .title-image {
+    width: 300px;
+    max-width: 100%;
+    margin: 12px 0;
   }
   .hero .hero-content .hero-meta {
     font-size: 14px;
@@ -202,6 +200,9 @@ body {
   font-size: 12px;
 }
 .navbar .navbar-nav .nav-link:hover {
+  color: var(--primary);
+}
+.navbar .navbar-nav .nav-link.active {
   color: var(--primary);
 }
 .navbar .profil {
@@ -478,4 +479,181 @@ body {
   background-color: rgba(255, 166, 0, 0.4);
   border: 1px solid var(--primary);
   color: var(--light);
+}
+
+.trending {
+  --cover-h: 200px;
+  padding: 32px 16px 120px;
+}
+.trending .trending-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.trending .trending-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+}
+.trending .trending-tabs {
+  gap: 4px;
+}
+.trending .trending-tabs .nav-link {
+  padding: 4px 12px;
+  font-size: 13px;
+  color: var(--text);
+  background: transparent;
+  border-radius: 4px;
+}
+.trending .trending-tabs .nav-link.active {
+  color: var(--dark);
+  background-color: var(--primary);
+}
+.trending .cover-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.trending .cover-row::-webkit-scrollbar {
+  display: none;
+}
+.trending .cover-card {
+  position: relative;
+  flex: 0 0 auto;
+  height: var(--cover-h);
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #151515;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.trending .cover-card.is-portrait {
+  aspect-ratio: 2/3;
+}
+.trending .cover-card.is-square {
+  aspect-ratio: 1/1;
+}
+.trending .cover-card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.trending .cover-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 45%);
+  pointer-events: none;
+}
+.trending .cover-card .cover-number {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 2;
+  min-width: 22px;
+  padding: 1px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  background-color: var(--primary);
+  border-radius: 4px;
+}
+.trending .cover-card .cover-stats {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 6px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--light);
+}
+.trending .cover-card .cover-stats i {
+  color: var(--primary);
+}
+
+.detail-modal .modal-content {
+  background-color: var(--dark);
+  color: var(--light);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.detail-modal .detail-cover-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  max-height: 320px;
+  width: 100%;
+}
+.detail-modal .detail-cover-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--dark), transparent 60%);
+}
+.detail-modal .detail-cover {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+}
+.detail-modal .detail-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  color: var(--light);
+  font-size: 22px;
+}
+.detail-modal .modal-body {
+  margin-top: -48px;
+  position: relative;
+  z-index: 2;
+}
+.detail-modal .detail-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 8px 0 4px;
+}
+.detail-modal .detail-meta {
+  font-size: 13px;
+  color: var(--text);
+}
+.detail-modal .detail-desc {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.detail-modal .hero-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--dark);
+  background-color: var(--primary);
+  border-radius: 4px;
+}
+
+@media (min-width: 993px) {
+  .trending {
+    --cover-h: 300px;
+    padding: 48px 48px 64px;
+  }
+  .trending .trending-title {
+    font-size: 28px;
+  }
+  .trending .cover-card:hover {
+    transform: scale(1.04);
+  }
 }/*# sourceMappingURL=main.css.map */
